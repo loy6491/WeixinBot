@@ -162,14 +162,13 @@ class WebWeixin(object):
         return False
 
     def genQRCode(self):
-        return self._str2qr('https://login.weixin.qq.com/l/' + self.uuid)
-        #return self._showQRCodeImg()
-        if sys.platform.startswith('win'):
-            self._showQRCodeImg('win')
-        elif sys.platform.find('darwin') >= 0:
-            self._showQRCodeImg('macos')
-        else:
-            self._str2qr('https://login.weixin.qq.com/l/' + self.uuid)
+        self._str2qr('https://login.weixin.qq.com/l/' + self.uuid)
+        #if sys.platform.startswith('win'):
+        #    self._showQRCodeImg('win')
+        #elif sys.platform.find('darwin') >= 0:
+        #    self._showQRCodeImg('macos')
+        #else:
+        #    self._str2qr('https://login.weixin.qq.com/l/' + self.uuid)
 
     def _showQRCodeImg(self, str):
         if self.commandLineQRCode:
