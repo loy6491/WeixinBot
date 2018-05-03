@@ -162,13 +162,13 @@ class WebWeixin(object):
         return False
 
     def genQRCode(self):
-        print('https://login.weixin.qq.com/l/' + self.uuid)
-        #if sys.platform.startswith('win'):
-        #    self._showQRCodeImg('win')
-        #elif sys.platform.find('darwin') >= 0:
-        #    self._showQRCodeImg('macos')
-        #else:
-        #    self._str2qr('https://login.weixin.qq.com/l/' + self.uuid)
+        #return self._showQRCodeImg()
+        if sys.platform.startswith('win'):
+            self._showQRCodeImg('win')
+        elif sys.platform.find('darwin') >= 0:
+            self._showQRCodeImg('macos')
+        else:
+            self._str2qr('https://login.weixin.qq.com/l/' + self.uuid)
 
     def _showQRCodeImg(self, str):
         if self.commandLineQRCode:
@@ -1081,9 +1081,9 @@ class WebWeixin(object):
         qr.make()
         # img = qr.make_image()
         # img.save("qrcode.png")
-        #mat = qr.get_matrix()
-        #self._printQR(mat)  # qr.print_tty() or qr.print_ascii()
-        qr.print_ascii(invert=True)
+        mat = qr.get_matrix()
+        self._printQR(mat)  # qr.print_tty() or qr.print_ascii()
+        #qr.print_ascii(invert=True)
 
     def _transcoding(self, data):
         if not data:
